@@ -14,10 +14,10 @@ export default function Main() {
                         Document Tracker
                     </p>
                 </div>
-                <div className='w-full py-2 px-40 flex gap-2'>
-                    <div className='w-5/12 bg-white p-4 flex flex-col gap-2'>
+                <div className='w-full p-2 lg:px-40 sm:p-2 flex lg:flex-row sm:flex-col flex-col gap-2'>
+                    <div className='lg:w-5/12 w-full bg-white p-2 flex flex-col gap-2'>
                         <p className='text-xl text-gray-700 font-extrabold'>Informasi Paket</p>
-                        <div className='w-full flex items-start justify-between'>
+                        <div className='w-full flex flex-col items-start justify-between'>
                             <p className='text-md text-gray-500'>
                                 Nomor Resi
                             </p>
@@ -26,23 +26,23 @@ export default function Main() {
                             </p>
                         </div>
                     </div>
-                    <div className='w-full bg-white p-4'>
+                    <div className='w-full bg-white p-2'>
                         <p className='text-xl text-green-500 font-bold border-b-2'>Update Status Paket</p>
-                        <div className='w-full p-4'>
+                        <div className='w-full p-2'>
                             <StepperNav
                                 steps={[
                                     {
-                                        stepContent: () => <div className='font-sm'>Step 1</div>,
+                                        stepContent: () => <div className='font-thin text-sm'>Step 1</div>,
                                         stepStatusCircleSize: 16,
                                         stepStateColor: "green"
                                     },
                                     {
-                                        stepContent: () => <div className='font-sm text-gray-500'>Step 2</div>,
+                                        stepContent: () => <div className='font-thin text-gray-500 text-sm'>Step 2</div>,
                                         stepStatusCircleSize: 16,
                                         stepStateColor: "#F6F6F6"
                                     },
                                     {
-                                        stepContent: () => <div className='font-sm text-gray-500'>Nomor Resi Pengiriman telah dibuat</div>,
+                                        stepContent: () => <div className='font-thin text-gray-500 text-sm'>Nomor Resi Pengiriman telah dibuat</div>,
                                         stepStatusCircleSize: 16,
                                         stepStateColor: "#F6F6F6"
                                     }

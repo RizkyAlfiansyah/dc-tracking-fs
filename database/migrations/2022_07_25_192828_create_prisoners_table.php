@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('prisoners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('resi');
+            $table->string('id_document');
+            $table->string('nama')->unique();
+            $table->string('resi')->unique();
             $table->string('status');
             $table->timestamps();
         });

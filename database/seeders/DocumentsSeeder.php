@@ -19,8 +19,7 @@ class DocumentsSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('documents')->insert([
-                'name' => 'Surat Keterangan ' . $i,
-                'nomor_surat' => $i . '23456789',
+                'nama' => 'Surat Keterangan ' . $i,
                 'nik' => '730806080987000' . $i,
                 'status' => 'Tidak Aktif',
                 'created_at' => now(),

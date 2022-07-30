@@ -3,9 +3,8 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import Modals from "./Modals";
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
-import uuid from "react-uuid";
 
-export default function ModalAddPengajuan({ isOpen, onClose }) {
+export default function ModalAddData({ isOpen, onClose }) {
 
     // console.log("props", props)
 
@@ -29,6 +28,11 @@ export default function ModalAddPengajuan({ isOpen, onClose }) {
             console.log(error);
         } finally {
             onClose();
+            setValue({
+                nik: "",
+                nama: "",
+                satus: "Nonaktif",
+            });
         }
     }
 
@@ -39,7 +43,7 @@ export default function ModalAddPengajuan({ isOpen, onClose }) {
         >
             <div className='w-full h-full flex flex-col gap-4 items-start justify-center'>
                 <div className="w-full flex items-center justify-between">
-                    <span className='font-bold'>Buat Pengajuan</span>
+                    <span className='font-bold'>Tambah Data Warga Binaan</span>
                     <FontAwesomeIcon
                         icon={faClose}
                         onClick={() => onClose()}

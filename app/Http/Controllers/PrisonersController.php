@@ -17,7 +17,7 @@ class PrisonersController extends Controller
     {
         //
         return Inertia::render('Data', [
-            'documents' => Prisoners::paginate(10),
+            'documents' => Prisoners::all(),
             'pathname' => 'data',
         ]);
     }

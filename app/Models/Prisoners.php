@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Prisoners extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_document',
+        'nama',
+        'resi',
+        'status',
+    ];
 }

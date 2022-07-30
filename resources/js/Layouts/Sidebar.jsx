@@ -30,12 +30,6 @@ export default function Sidebar({ path }) {
                                 <span className="text-gray-600 sm:text-sm"> Data Pengajuan </span>
                             </Link>
                         </div>
-                        <div className={`w-full flex gap-4 items-center justify-start cursor-pointer rounded-full hover:bg-slate-100  p-2 ${path == "alur-pengusulan" && ("bg-slate-100")}`}>
-                            <Link href={route('data')}>
-                                <FontAwesomeIcon icon={faStairs} />
-                                <span className="text-gray-600 sm:text-sm"> Alur Pengusulan </span>
-                            </Link>
-                        </div>
                     </div>
                 </div>
                 <div className="w-full flex items-center">

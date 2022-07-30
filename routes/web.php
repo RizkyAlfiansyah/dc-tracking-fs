@@ -25,6 +25,29 @@ Route::get('/', function () {
 Route::get('/main', function () {
     return Inertia::render('Main');
 })->name('main');
+Route::post(
+    '/pengajuan',
+    [
+        DocumentsController::class,
+        'store',
+    ]
+)->name('pengajuan.store');
+
+Route::post(
+    '/pengajuan/update',
+    [
+        DocumentsController::class,
+        'update',
+    ]
+)->name('pengajuan.update');
+
+Route::post(
+    '/data/delete',
+    [
+        DocumentsController::class,
+        'destroy',
+    ]
+)->name('data.delete');
 
 
 // Route::get('/dashboard', function () {

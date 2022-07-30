@@ -18,7 +18,7 @@ const HomePage = ({ children, docs }) => {
                 <div className='lg:w-60 w-4/12 min-h-screen bg-white px-6 py-6'>
                     <Sidebar path={docs} />
                 </div>
-                <div className='w-full flex flex-col xl:px-6 xl:py-4 px-2 py-4 gap-4'>
+                <div className='w-full flex flex-col xl:px-6 xl:py-4 px-2 py-4 gap-4 overflow-auto'>
                     {children}
                 </div>
             </div>
