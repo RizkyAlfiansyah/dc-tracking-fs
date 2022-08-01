@@ -25,21 +25,23 @@ Route::get('/', function () {
 Route::get('/main', function () {
     return Inertia::render('Main');
 })->name('main');
+
+//Routing untuk data warga binaan
 Route::post(
-    '/pengajuan',
+    '/data',
     [
         DocumentsController::class,
         'store',
     ]
-)->name('pengajuan.store');
+)->name('data.store');
 
 Route::post(
-    '/pengajuan/update',
+    '/data/update',
     [
         DocumentsController::class,
         'update',
     ]
-)->name('pengajuan.update');
+)->name('data.update');
 
 Route::post(
     '/data/delete',
@@ -49,18 +51,20 @@ Route::post(
     ]
 )->name('data.delete');
 
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Overview');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//routing untuk pengajuan surat
+Route::post(
+    '/pengajuan',
+    [
+        PrisonersController::class,
+        'store',
+    ]
+)->name('pengajuan.store');
+Route::post(
+    '/pengajuan/delete',
+    [
+        PrisonersController::class,
+        'destroy',
+    ]
+)->name('pengajuan.delete');
 
 require __DIR__ . '/auth.php';

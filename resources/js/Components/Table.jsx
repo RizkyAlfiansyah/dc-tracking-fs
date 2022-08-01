@@ -12,7 +12,7 @@ export default function Table({ data }) {
 
     const path = data?.pathname
 
-    console.log("path", data.documents)
+    console.log("data document", data.documents)
 
     useEffect(() => {
         if (dataEditId) {
@@ -95,7 +95,7 @@ export default function Table({ data }) {
                         </thead>
                         <tbody className='text-sm'>
                             {
-                                data.documents.data.map((document, index) => {
+                                data.pengajuan.data.map((document, index) => {
                                     return (
                                         <tr key={index} className='text-center'>
                                             <td className='px-2'>{index + 1}</td>

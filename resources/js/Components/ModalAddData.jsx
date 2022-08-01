@@ -4,7 +4,7 @@ import Modals from "./Modals";
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function ModalAddData({ isOpen, onClose }) {
+export default function ModalAddData({ isOpen, onClose, setSelectedRows }) {
 
     // console.log("props", props)
 
@@ -23,7 +23,7 @@ export default function ModalAddData({ isOpen, onClose }) {
         }
 
         try {
-            Inertia.post("/pengajuan", data);
+            Inertia.post("/data", data);
         } catch (error) {
             console.log(error);
         } finally {
@@ -33,6 +33,7 @@ export default function ModalAddData({ isOpen, onClose }) {
                 nama: "",
                 satus: "Nonaktif",
             });
+            setSelectedRows([]);
         }
     }
 

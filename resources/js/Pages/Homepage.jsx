@@ -1,9 +1,6 @@
 import React from 'react'
 import Sidebar from '@/Layouts/Sidebar'
 import { Head } from '@inertiajs/inertia-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendar, faUser, faEnvelope, faPencil, faTrash, faAdd } from '@fortawesome/free-solid-svg-icons'
-import Dashboard from '@/Layouts/Dashboard'
 
 const HomePage = ({ children, docs }) => {
 

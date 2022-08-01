@@ -5,15 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Prisoners extends Model
+class Checkpoints extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id_document',
         'nama',
         'resi',
-        'status',
-        'checkpoint',
+        'cp1',
+        'cp2',
+        'cp3',
+        'cp4',
+        'cp5',
+        'cp6',
+        'cp7',
+        'cp8',
+        'cp9',
+        'cp10',
     ];
 }

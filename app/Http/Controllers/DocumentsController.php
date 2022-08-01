@@ -57,13 +57,6 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-        // $req = array_push($request->all(), [
-        //     'uuid' => $this->faker->randomNumber(8),
-        //     'resi' => $this->faker->randomNumber(8),
-        //     'created_at' => now(),
-        // ]);
 
         $faker = app(Faker::class);
 

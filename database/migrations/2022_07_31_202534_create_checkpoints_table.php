@@ -13,13 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prisoners', function (Blueprint $table) {
+        Schema::create('checkpoints', function (Blueprint $table) {
             $table->id();
-            $table->string('id_document');
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->string('resi')->unique();
-            $table->string('checkpoint')->nullable();
-            $table->string('status');
+            $table->string('cp1');
+            $table->string('cp2');
+            $table->string('cp3');
+            $table->string('cp4');
+            $table->string('cp5');
+            $table->string('cp6');
+            $table->string('cp7');
+            $table->string('cp8');
+            $table->string('cp9');
+            $table->string('cp10');
             $table->timestamps();
         });
     }
@@ -31,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prisoners');
+        Schema::dropIfExists('checkpoints');
     }
 };

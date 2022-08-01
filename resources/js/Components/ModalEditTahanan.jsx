@@ -26,18 +26,9 @@ export default function ModalEditTahanan({ isOpen, onClose, data }) {
     console.log("value", value);
 
     const handleSubmit = () => {
-        // const data = {
-        //     id: data?.id,
-        //     nik: value.nik,
-        //     nama: value.nama,
-        //     status: value.status,
-        //     id_prisoner: value?.id_prisoner,
-        // }
-
-        // console.log("data", data);
 
         try {
-            Inertia.post("/pengajuan/update", value);
+            Inertia.post("/data/update", value);
         } catch (error) {
             console.log(error);
         } finally {

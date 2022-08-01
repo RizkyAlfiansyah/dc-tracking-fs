@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('id_prisoner')->unique();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->string('nik')->unique();
             $table->string('status');
             $table->timestamps();

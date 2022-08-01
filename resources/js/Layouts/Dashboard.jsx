@@ -34,7 +34,6 @@ export default function Dashboard(props) {
         {
             name: 'NO',
             selector: (row, index) => index + 1,
-            sortable: true,
             center: true,
             grow: 0,
 
@@ -44,7 +43,6 @@ export default function Dashboard(props) {
             selector: row => <div className='text-xs'>
                 {row.nik}
             </div>,
-            sortable: true,
             center: true,
             grow: 0.5,
         },
@@ -53,14 +51,12 @@ export default function Dashboard(props) {
             selector: row => <div className='text-xs'>
                 {row.nama}
             </div>,
-            sortable: true,
         },
         {
             name: 'Status',
             selector: row => <div className={`w-14 p-1 text-xs text-center ${row.status === 'Aktif' ? 'bg-orange-400' : 'bg-zinc-400'} m-auto text-white rounded-lg`}>
                 {row.status}
             </div>,
-            sortable: true,
             center: true,
         },
         {
@@ -119,6 +115,10 @@ export default function Dashboard(props) {
     useEffect(() => {
         if (documents?.flash?.success) {
             notify();
+            setSelectedRows([]);
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
         }
     }, [documents]);
 
@@ -218,6 +218,7 @@ export default function Dashboard(props) {
             <ModalAddData
                 isOpen={openModal}
                 onClose={setOpenModal}
+                setSelectedRows={setSelectedRows}
             />
             <ModalEditTahanan
                 isOpen={openModalEdit}

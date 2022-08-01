@@ -5,17 +5,17 @@ import Header from '@/Layouts/Header';
 import Search from '@/Components/Search';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ModalAddData from '@/Components/ModalAddData';
 import DataTable from 'react-data-table-component';
-import ModalEditTahanan from '@/Components/ModalEditTahanan';
 import ModalDeleteConfirmation from '@/Components/ModalDeleteConfirmation';
 import { CSVLink } from 'react-csv';
+import ModalDetailPengajuan from '@/Components/ModalDetailPengajuan';
+import ModalAddPengajuan from '@/Components/ModalAddPengajuan';
 
 
 
 
 export default function Pengajuan(props) {
-    console.log("props", props)
+
     const { documents } = props;
     const [openModal, setOpenModal] = useState(false);
     const [pending, setPending] = useState(true);
@@ -25,7 +25,8 @@ export default function Pengajuan(props) {
     const [dataEditId, setDataEditId] = useState("")
     const [filterText, setFilterText] = useState('');
     const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-    const filteredItems = documents?.documents?.filter(
+    const [options, setOptions] = useState({});
+    const filteredItems = documents?.pengajuan?.filter(
         item => item.nama && item.nama.toLowerCase().includes(filterText.toLowerCase()),
     );
 
@@ -35,24 +36,30 @@ export default function Pengajuan(props) {
             selector: row => <div className='text-xs'>
                 {row.nama}
             </div>,
-            sortable: true,
         },
         {
             name: 'Resi',
             selector: row => <div className='text-xs'>
                 {row.resi}
             </div>,
-            sortable: true,
         },
         {
             name: 'Status',
             selector: row => <div className={`w-14 p-1 text-xs text-center ${row.status === 'Aktif' ? 'bg-orange-400' : 'bg-zinc-400'} m-auto text-white rounded-lg`}>
                 {row.status}
             </div>,
-            sortable: true,
         },
         {
-            cell: row => <button className='flex items-center gap-1 bg-blue-400 hover:bg-blue-300 px-2 py-1 text-white text-xs rounded-lg'>
+            name: 'Checkpoint',
+            selector: row => <div className={`text-xs text-start m-auto rounded-lg`}>
+                {row.checkpoint}
+            </div>,
+        },
+        {
+            cell: row => <button className='flex items-center gap-1 bg-blue-400 hover:bg-blue-300 px-2 py-1 text-white text-xs rounded-lg' onClick={() => {
+                setOpenModalEdit(true)
+                setDataEditId(row.id)
+            }}>
                 <FontAwesomeIcon icon={faCircleExclamation} />
                 Detail
             </button>,
@@ -84,6 +91,7 @@ export default function Pengajuan(props) {
                     isOpen={toggleCleared}
                     onClose={() => setToggleCleared(false)}
                     data={{ id: selectedRows.map(r => r.id) }}
+                    isPengajuan={true}
                 />
             </>
         );
@@ -102,8 +110,19 @@ export default function Pengajuan(props) {
     useEffect(() => {
         if (documents?.flash?.success) {
             notify();
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
         }
     }, [documents]);
+
+    useEffect(() => {
+        if (documents.documents.length > 0) {
+            setOptions(documents.documents);
+        }
+    }, []);
+
+    console.log(filteredItems)
 
     return (
         <>
@@ -163,7 +182,7 @@ export default function Pengajuan(props) {
                         <div className='flex gap-2 items-center bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-md'>
                             <FontAwesomeIcon icon={faDownload} />
                             <CSVLink
-                                data={documents?.documents}
+                                data={documents?.pengajuan}
                                 className='border-l-2 px-2 text-xs'
                             >
                                 Export Data
@@ -172,7 +191,7 @@ export default function Pengajuan(props) {
                         <div className='flex gap-2 items-center bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-md'>
                             <FontAwesomeIcon icon={faUpload} />
                             <CSVLink
-                                data={documents?.documents}
+                                data={documents?.pengajuan}
                                 className='border-l-2 px-2 text-xs'
                             >
                                 Import Data
@@ -198,11 +217,14 @@ export default function Pengajuan(props) {
                     paginationResetDefaultPage={resetPaginationToggle}
                 />
             </div>
-            <ModalAddData
+            <ModalAddPengajuan
                 isOpen={openModal}
                 onClose={setOpenModal}
+                data={options}
+                secondData={documents?.pengajuan}
+                setSelectedRows={setSelectedRows}
             />
-            <ModalEditTahanan
+            <ModalDetailPengajuan
                 isOpen={openModalEdit}
                 onClose={() => setOpenModalEdit(false)}
                 data={filteredItems?.find(item => item.id === dataEditId)}
