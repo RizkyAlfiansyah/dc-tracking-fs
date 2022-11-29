@@ -55,7 +55,6 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="mt-4">
                     <Label forInput="password" value="Password" />
-
                     <Input
                         type="password"
                         name="password"
